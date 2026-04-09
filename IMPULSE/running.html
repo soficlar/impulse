@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Top 10 mejores zapatos para correr - Impulse">
+    <meta name="author" content="Ana Sofía Claros Melo">
+    <title>Top 10 Zapatos para Correr - Impulse</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .running-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .running-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .running-header h1 {
+            font-size: 42px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .running-header p {
+            font-size: 18px;
+            color: #698388;
+        }
+
+        .zapato-running {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            overflow: hidden;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            padding: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .zapato-running:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .zapato-running img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .zapato-info {
+            flex: 1;
+        }
+
+        .zapato-numero {
+            display: inline-block;
+            background: #698388;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .zapato-running h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .zapato-running .marca {
+            color: #698388;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .zapato-running p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .zapato-caracteristicas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .caracteristica {
+            background: #f9f9f9;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border-left: 4px solid #698388;
+        }
+
+        .caracteristica strong {
+            color: #333;
+        }
+
+        .zapato-estrellas {
+            color: #ffc107;
+            margin: 10px 0;
+        }
+
+        .zapato-precio {
+            font-size: 24px;
+            color: #698388;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .boton-comprar {
+            background-color: #698388;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .boton-comprar:hover {
+            background-color: #3a5663;
+        }
+
+        @media (max-width: 768px) {
+            .zapato-running {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .zapato-running img {
+                width: 100%;
+                height: auto;
+            }
+
+            .zapato-caracteristicas {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-content">
+        <div class="header-left">
+            <a href="index.html" class="inicio-link"><i class="fa-solid fa-house"></i></a>
+        </div>
+        <div class="header-center">
+            <h2>Impulse</h2>
+        </div>
+        <div class="header-right">
+            <input type="text" id="buscador" placeholder="Buscar productos...">
+            <a href="index.carrito.html"><i class="fa fa-shopping-cart"></i></a>
+        </div>
+    </div>
+</header>
+
+<div class="running-container">
+    <div class="running-header">
+        <h1>Top 10 Mejores Zapatos para Correr</h1>
+        <p>Descubre las mejores opciones de running según expertos y reseñas de usuarios</p>
+    </div>
+
+    <!-- Zapato 1 -->
+    <div class="zapato-running">
+        <img src="img/running_1.avif" alt="adidas Terrex Swift R3">
+        <div class="zapato-info">
+            <span class="zapato-numero">#1</span>
+            <h2>adidas Terrex Swift R3</h2>
+            <p class="marca">adidas</p>
+            <p>El mejor rendimiento en terrenos variados. Excelente amortiguación y tracción para correr en naturaleza con máxima comodidad.</p>
+            <div class="zapato-caracteristicas">
+                <div class="caracteristica">
+                    <strong>Tipo:</strong> Trail Running
+                </div>
+                <div class="caracteristica">
+                    <strong>Peso:</strong> 280g (aprox)
+                </div>
+                <div class="caracteristica">
+                    <strong>Amortiguación:</strong> Máxima
+                </div>
+                <div class="caracteristica">
+                    <strong>Uso:</strong> Off-road
+                </div>
+            </div>
+            <div class="zapato-estrellas">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <div class="zapato-precio">COP 400.000</div>
+            <a href="ficha-adidas-terrex-swift-r3.html"><button class="boton-comprar">Comprar ahora</button></a>
+        </div>
+    </div>
+
+    <!-- Zapato 2 -->
+    <div class="zapato-running">
+        <img src="img/running_2.avif" alt="adidas Comfort">
+        <div class="zapato-info">
+            <span class="zapato-numero">#2</span>
+            <h2>adidas Comfort</h2>
+            <p class="marca">adidas</p>
+            <p>Versátil y cómodo para entrenamientos de alta intensidad. Proporciona soporte lateral perfecto para cambios rápidos de dirección.</p>
+            <div class="zapato-caracteristicas">
+                <div class="caracteristica">
+                    <strong>Tipo:</strong> Training
+                </div>
+                <div class="caracteristica">
+                    <strong>Peso:</strong> 260g (aprox)
+                </div>
+                <div class="caracteristica">
+                    <strong>Amortiguación:</strong> Media
+                </div>
+                <div class="caracteristica">
+                    <strong>Uso:</strong> Gym/Entrenamientos
+                </div>
+            </div>
+            <div class="zapato-estrellas">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+            </div>
+            <div class="zapato-precio">COP 450.000</div>
+            <a href="ficha-adidas-comfort.html"><button class="boton-comprar">Comprar ahora</button></a>
+        </div>
+    </div>
+
+    <!-- Zapato 3 -->
+    <div class="zapato-running">
+        <img src="img/running_3.avif" alt="Adidas Adizero Adios Pro 4">
+        <div class="zapato-info">
+            <span class="zapato-numero">#3</span>
+            <h2>Adidas Adizero Adios Pro 4</h2>
+            <p class="marca">adidas</p>
+            <p>Zapato de running de alto rendimiento con tecnología Adizero. Diseñado para corredores que buscan velocidad y eficiencia en sus entrenamientos.</p>
+            <div class="zapato-caracteristicas">
+                <div class="caracteristica">
+                    <strong>Tipo:</strong> Running/Casual
+                </div>
+                <div class="caracteristica">
+                    <strong>Peso:</strong> 290g (aprox)
+                </div>
+                <div class="caracteristica">
+                    <strong>Amortiguación:</strong> Alta
+                </div>
+                <div class="caracteristica">
+                    <strong>Uso:</strong> Diario
+                </div>
+            </div>
+            <div class="zapato-estrellas">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <div class="zapato-precio">COP 329.000</div>
+            <a href="ficha-adidas-adizero-adios-pro-4.html"><button class="boton-comprar">Comprar ahora</button></a>
+        </div>
+    </div>
+
+    <!-- Zapato 4 -->
+    <div class="zapato-running">
+        <img src="img/running_4.avif" alt="Adidas Ultraboost Light">
+        <div class="zapato-info">
+            <span class="zapato-numero">#4</span>
+            <h2>Adidas Ultraboost Light</h2>
+            <p class="marca">adidas</p>
+            <p>Diseño aerodinámico para máxima velocidad. Ideal para corredores competitivos que necesitan ligereza y respuesta rápida.</p>
+            <div class="zapato-caracteristicas">
+                <div class="caracteristica">
+                    <strong>Tipo:</strong> Racing
+                </div>
+                <div class="caracteristica">
+                    <strong>Peso:</strong> 240g (aprox)
+                </div>
+                <div class="caracteristica">
+                    <strong>Amortiguación:</strong> Mínima
+                </div>
+                <div class="caracteristica">
+                    <strong>Uso:</strong> Competencia
+                </div>
+            </div>
+            <div class="zapato-estrellas">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <div class="zapato-precio">COP 500.000</div>
+            <a href="ficha-adidas-ultraboost-light.html"><button class="boton-comprar">Comprar ahora</button></a>
+        </div>
+    </div>
+
+    <!-- Zapato 5 -->
+    <div class="zapato-running">
+        <img src="img/running_5.avif" alt="Adidas Supernova Rise 3">
+        <div class="zapato-info">
+            <span class="zapato-numero">#5</span>
+            <h2>Adidas Supernova Rise 3</h2>
+            <p class="marca">adidas</p>
+            <p>Excelente relación precio-rendimiento. Tecnología adidas de última generación para corredores de todos los niveles.</p>
+            <div class="zapato-caracteristicas">
+                <div class="caracteristica">
+                    <strong>Tipo:</strong> Running
+                </div>
+                <div class="caracteristica">
+                    <strong>Peso:</strong> 270g (aprox)
+                </div>
+                <div class="caracteristica">
+                    <strong>Amortiguación:</strong> Media
+                </div>
+                <div class="caracteristica">
+                    <strong>Uso:</strong> Training
+                </div>
+            </div>
+            <div class="zapato-estrellas">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <div class="zapato-precio">COP 450.000</div>
+            <a href="ficha-adidas-supernova-rise-3.html"><button class="boton-comprar">Comprar ahora</button></a>
+        </div>
+    </div>
+
+    <!-- Zapato 6 -->
+    <div class="zapato-running">
+        <img src="img/running_6.avif" alt="Adidas Duramo Speed 2">
+        <div class="zapato-info">
+            <span class="zapato-numero">#6</span>
+            <h2>Adidas Duramo Speed 2</h2>
+            <p class="marca">adidas</p>
+            <p>Inspiración en la velocidad extrema. Diseño deportivo agresivo para corredores que quieren destacar con estilo.</p>
+            <div class="zapato-caracteristicas">
+                <div class="caracteristica">
+                    <strong>Tipo:</strong> Performance
+                </div>
+                <div class="caracteristica">
+                    <strong>Peso:</strong> 280g (aprox)
+                </div>
+                <div class="caracteristica">
+                    <strong>Amortiguación:</strong> Media-Alta
+                </div>
+                <div class="caracteristica">
+                    <strong>Uso:</strong> Deportivo
+                </div>
+            </div>
+            <div class="zapato-estrellas">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+            </div>
+            <div class="zapato-precio">COP 450.000</div>
+            <a href="ficha-adidas-duramo-speed-2.html"><button class="boton-comprar">Comprar ahora</button></a>
+        </div>
+    </div>
+
+    <!-- Zapato 7 -->
+    <div class="zapato-running">
+        <img src="img/running_7.avif" alt="Adidas Solarglide 6">
+        <div class="zapato-info">
+            <span class="zapato-numero">#7</span>
+            <h2>adidas Solarglide 6</h2>
+            <p class="marca">adidas</p>
+            <p>Excelente rendimiento en carreras de alto nivel. Tecnología de amortiguación avanzada para maximizar la eficiencia en cada paso.</p>
+            <div class="zapato-caracteristicas">
+                <div class="caracteristica">
+                    <strong>Tipo:</strong> Control
+                </div>
+                <div class="caracteristica">
+                    <strong>Peso:</strong> 310g (aprox)
+                </div>
+                <div class="caracteristica">
+                    <strong>Amortiguación:</strong> Robusta
+                </div>
+                <div class="caracteristica">
+                    <strong>Uso:</strong> Estabilidad
+                </div>
+            </div>
+            <div class="zapato-estrellas">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <div class="zapato-precio">COP 350.000</div>
+            <a href="ficha-adidas-solarglide-6.html"><button class="boton-comprar">Comprar ahora</button></a>
+        </div>
+    </div>
+
+    <!-- Zapato 8 -->
+    <div class="zapato-running">
+        <img src="img/running_8.avif" alt="Adidas Terrex Agravic Speed">
+        <div class="zapato-info">
+            <span class="zapato-numero">#8</span>
+            <h2>Adidas Terrex Agravic Speed</h2>
+            <p class="marca">adidas </p>
+            <p>Comodidad casual con toques deportivos. Perfecto para correr de forma relajada y el uso diario.</p>
+            <div class="zapato-caracteristicas">
+                <div class="caracteristica">
+                    <strong>Tipo:</strong> Casual
+                </div>
+                <div class="caracteristica">
+                    <strong>Peso:</strong> 300g (aprox)
+                </div>
+                <div class="caracteristica">
+                    <strong>Amortiguación:</strong> Media
+                </div>
+                <div class="caracteristica">
+                    <strong>Uso:</strong> Casual
+                </div>
+            </div>
+            <div class="zapato-estrellas">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><i class="fa-regular fa-star"></i>
+            </div>
+            <div class="zapato-precio">COP 250.000</div>
+            <a href="ficha-adidas-terrex-agravic-speed.html"><button class="boton-comprar">Comprar ahora</button></a>
+        </div>
+    </div>
+
+    <!-- Zapato 9 -->
+    <div class="zapato-running">
+        <img src="img/running_9.avif" alt="Adidas Adizero EVO SL">
+        <div class="zapato-info">
+            <span class="zapato-numero">#9</span>
+            <h2>Adidas Adizero EVO SL</h2>
+            <p class="marca">adidas</p>
+            <p>Colección especial con tecnología de punta. disponible con nuevas características revolucionarias.</p>
+            <div class="zapato-caracteristicas">
+                <div class="caracteristica">
+                    <strong>Tipo:</strong> Premium
+                </div>
+                <div class="caracteristica">
+                    <strong>Peso:</strong> 250g 
+                </div>
+                <div class="caracteristica">
+                    <strong>Amortiguación:</strong> Ultra
+                </div>
+                <div class="caracteristica">
+                    <strong>Uso:</strong> Élite
+                </div>
+            </div>
+            <div class="zapato-estrellas">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <div class="zapato-precio">COP 520.000</div>
+            <a href="ficha-adidas-adizero-evo-sl.html"><button class="boton-comprar">Comprar ahora</button></a>
+        </div>
+    </div>
+
+    <!-- Zapato 10 -->
+    <div class="zapato-running">
+        <img src="img/running_10.avif" alt="Adidas Adizero Boston 13">
+        <div class="zapato-info">
+            <span class="zapato-numero">#10</span>
+            <h2>Adidas Adizero Boston 13</h2>
+            <p class="marca">adidas</p>
+            <p>La más reciente colección de adidas para running. Combina innovación y estilo en cada detalle del zapato.</p>
+            <div class="zapato-caracteristicas">
+                <div class="caracteristica">
+                    <strong>Tipo:</strong> Innovation
+                </div>
+                <div class="caracteristica">
+                    <strong>Peso:</strong> 270g (aprox)
+                </div>
+                <div class="caracteristica">
+                    <strong>Amortiguación:</strong> Alta
+                </div>
+                <div class="caracteristica">
+                    <strong>Uso:</strong> Moderno
+                </div>
+            </div>
+            <div class="zapato-estrellas">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <div class="zapato-precio">COP 480.000</div>
+            <a href="ficha-adidas-adizero-boston-13.html"><button class="boton-comprar">Comprar ahora</button></a>
+        </div>
+    </div>
+
+</div>
+
+<footer> 
+    <div class="footer-grid">
+
+        <div>
+            <h4>Impulse</h4>
+            <p><a href="impulse.html#sobre">Sobre Nosotros</a></p>
+            <p><a href="impulse.html#tiendas">Tiendas</a></p>
+            <p><a href="impulse.html#envios">Envios</a></p>
+        </div>
+
+        <div>
+            <h4>Ayuda</h4>
+            <p><a href="ayuda.html#devoluciones">Politicas de devolución</a></p>
+            <p><a href="ayuda.html#pqr">PQR</a></p>
+        </div>
+
+        <div>
+            <h4>Redes Sociales</h4>
+            <p><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></p>
+            <p><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></p>
+            <p><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></p>
+        </div>
+
+        <div>
+            <h4>Contacto</h4>
+            <p>support@email.com</p>
+            <p>Cra 5 38-07 Neiva-Huila</p>
+            <p>315 157 04 80</p>
+        </div>
+
+    </div>
+
+    <p class="copy">© 2026 Impulse - Todos los derechos reservados</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Catálogo de Guayos - Impulse">
+    <meta name="author" content="Ana Sofía Claros Melo">
+    <title>Guayos - Impulse</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .guayos-container {
+            padding: 30px;
+            background: #f4f4f4;
+        }
+
+        .guayos-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .guayos-header h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .guayos-header p {
+            color: #698388;
+            font-size: 16px;
+        }
+
+        .filtros-guayos {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filtros-container {
+            margin-bottom: 30px;
+        }
+
+        .btn-filtros {
+            background-color: #698388;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-filtros:hover {
+            background-color: #3a5663;
+        }
+
+        .menu-filtros {
+            display: none;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-top: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-filtros.active {
+            display: grid;
+        }
+
+        .filtro-grupo h4 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .filtro-grupo label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .filtro-grupo input {
+            margin-right: 8px;
+        }
+
+        .columna_guayos {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card-guayo {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card-guayo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .card-guayo img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .card-guayo h4 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .card-guayo p {
+            color: #698388;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .precio-guayo {
+            font-size: 18px;
+            font-weight: bold;
+            color: #698388;
+            margin: 10px 0;
+        }
+
+        .estrellas {
+            color: #ffc107;
+            font-size: 14px;
+            margin: 8px 0;
+        }
+
+        .card-guayo button {
+            background-color: #698388;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .card-guayo button:hover {
+            background-color: #3a5663;
+        }
+
+        .sin-resultados {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-size: 18px;
+        }
+
+        @media (max-width: 1024px) {
+            .columna_guayos {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .columna_guayos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .menu-filtros {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .columna_guayos {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-content">
+        <div class="header-left">
+            <a href="index.html" class="inicio-link"><i class="fa-solid fa-house"></i></a>
+        </div>
+        <div class="header-center">
+            <h2>Impulse</h2>
+        </div>
+        <div class="header-right">
+            <input type="text" id="buscador" placeholder="Buscar guayos...">
+            <a href="index.carrito.html"><i class="fa fa-shopping-cart"></i></a>
+        </div>
+    </div>
+</header>
+
+<div class="guayos-container">
+    <div class="guayos-header">
+        <h1>Catálogo de Guayos</h1>
+        <p>Encuentra los mejores guayos para destacar en la cancha</p>
+    </div>
+
+    <div class="filtros-guayos">
+        <div class="filtros-container">
+            <button class="btn-filtros" id="btn-filtros"><i class="fa-solid fa-sliders"></i> Filtros</button>
+            <div class="menu-filtros" id="menu-filtros">
+                <div class="filtro-grupo">
+                    <h4>Marca</h4>
+                    <label><input type="checkbox" name="filtro-marca" value="Nike"> Nike</label>
+                    <label><input type="checkbox" name="filtro-marca" value="Adidas"> Adidas</label>
+                    <label><input type="checkbox" name="filtro-marca" value="Puma"> Puma</label>
+                    <label><input type="checkbox" name="filtro-marca" value="Asics"> Asics</label>
+                </div>
+                <div class="filtro-grupo">
+                    <h4>Tipo de Deporte</h4>
+                    <label><input type="checkbox" name="filtro-deporte" value="Futbol"> Fútbol</label>
+                    <label><input type="checkbox" name="filtro-deporte" value="Futbol Sala"> Fútbol Sala</label>
+                </div>
+                <div class="filtro-grupo">
+                    <h4>Género</h4>
+                    <label><input type="checkbox" name="filtro-genero" value="Hombre"> Hombre</label>
+                    <label><input type="checkbox" name="filtro-genero" value="Mujer"> Mujer</label>
+                    <label><input type="checkbox" name="filtro-genero" value="Unisex"> Unisex</label>
+                </div>
+                <div class="filtro-grupo">
+                    <h4>Talla</h4>
+                    <label><input type="checkbox" name="filtro-talla" value="36"> 36</label>
+                    <label><input type="checkbox" name="filtro-talla" value="37"> 37</label>
+                    <label><input type="checkbox" name="filtro-talla" value="38"> 38</label>
+                    <label><input type="checkbox" name="filtro-talla" value="39"> 39</label>
+                    <label><input type="checkbox" name="filtro-talla" value="40"> 40</label>
+                    <label><input type="checkbox" name="filtro-talla" value="41"> 41</label>
+                    <label><input type="checkbox" name="filtro-talla" value="42"> 42</label>
+                    <label><input type="checkbox" name="filtro-talla" value="43"> 43</label>
+                </div>
+                <div class="filtro-grupo">
+                    <h4>Color</h4>
+                    <label><input type="checkbox" name="filtro-color" value="Negro"> Negro</label>
+                    <label><input type="checkbox" name="filtro-color" value="Blanco"> Blanco</label>
+                    <label><input type="checkbox" name="filtro-color" value="Rojo"> Rojo</label>
+                    <label><input type="checkbox" name="filtro-color" value="Azul"> Azul</label>
+                    <label><input type="checkbox" name="filtro-color" value="Verde"> Verde</label>
+                </div>
+                <div class="filtro-grupo">
+                    <h4>Rango de Precio</h4>
+                    <label><input type="checkbox" name="filtro-precio" value="0-200000"> Hasta $200.000</label>
+                    <label><input type="checkbox" name="filtro-precio" value="200000-350000"> $200.000 - $350.000</label>
+                    <label><input type="checkbox" name="filtro-precio" value="350000-500000"> $350.000 - $500.000</label>
+                    <label><input type="checkbox" name="filtro-precio" value="500000-999999"> Mayor a $500.000</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="columna_guayos" id="contenedor-guayos">
+            <!-- Los guayos se cargarán aquí -->
+            <!-- Ejemplo de estructura para que agregues tus imágenes -->
+        </div>
+
+        <div class="sin-resultados" id="sin-resultados" style="display: none;">
+            No se encontraron guayos con los filtros seleccionados
+        </div>
+    </div>
+</div>
+
+<footer> 
+    <div class="footer-grid">
+
+        <div>
+            <h4>Impulse</h4>
+            <p><a href="impulse.html#sobre">Sobre Nosotros</a></p>
+            <p><a href="impulse.html#tiendas">Tiendas</a></p>
+            <p><a href="impulse.html#envios">Envios</a></p>
+        </div>
+
+        <div>
+            <h4>Ayuda</h4>
+            <p><a href="ayuda.html#devoluciones">Politicas de devolución</a></p>
+            <p><a href="ayuda.html#pqr">PQR</a></p>
+        </div>
+
+        <div>
+            <h4>Redes Sociales</h4>
+            <p><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></p>
+            <p><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></p>
+            <p><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></p>
+        </div>
+
+        <div>
+            <h4>Contacto</h4>
+            <p>support@email.com</p>
+            <p>Cra 5 38-07 Neiva-Huila</p>
+            <p>315 157 04 80</p>
+        </div>
+
+    </div>
+
+    <p class="copy">© 2026 Impulse - Todos los derechos reservados</p>
+</footer>
+<script>
+// Array de guayos disponibles - Reemplaza con los datos de tus productos
+const guayos = [
+    {
+        id: 1,
+        nombre: "Adidas Phantom",
+        marca: "Adidas",
+        deporte: "Futbol",
+        genero: "Hombre",
+        color: "Negro",
+        talla: "40,41,42,43",
+        precio: 450000,
+        imagen: "img/guayo_1.avif",
+        estrellas: 5
+    },
+    {
+        id: 2,
+        nombre: "Adidas Predator",
+        marca: "Adidas",
+        deporte: "Futbol",
+        genero: "Hombre",
+        color: "Blanco",
+        talla: "39,40,41,42,43",
+        precio: 500000,
+        imagen: "img/guayo_2.avif",
+        estrellas: 5
+    },
+    {
+        id: 3,
+        nombre: "Adidas Future Z",
+        marca: "Adidas",
+        deporte: "Futbol",
+        genero: "Hombre",
+        color: "Rojo",
+        talla: "40,41,42,43",
+        precio: 420000,
+        imagen: "img/guayo_3.avif",
+        estrellas: 4
+    },
+    {
+        id: 4,
+        nombre: "Adidas Mercurial",
+        marca: "Adidas",
+        deporte: "Futbol",
+        genero: "Hombre",
+        color: "Verde",
+        talla: "39,40,41,42",
+        precio: 480000,
+        imagen: "img/guayo_4.avif",
+        estrellas: 5
+    },
+    {
+        id: 5,
+        nombre: "Adidas Lethal",
+        marca: "Adidas",
+        deporte: "Futbol",
+        genero: "Hombre",
+        color: "Negro",
+        talla: "40,41,42,43",
+        precio: 350000,
+        imagen: "img/guayo_5.avif",
+        estrellas: 4
+    },
+    {
+        id: 6,
+        nombre: "Adidas Phantom Mujer",
+        marca: "Adidas",
+        deporte: "Futbol",
+        genero: "Mujer",
+        color: "Blanco",
+        talla: "36,37,38,39,40",
+        precio: 420000,
+        imagen: "img/guayo_6.avif",
+        estrellas: 5
+    },
+    {
+        id: 7,
+        nombre: "Adidas Copa",
+        marca: "Adidas",
+        deporte: "Futbol Sala",
+        genero: "Unisex",
+        color: "Negro",
+        talla: "36,37,38,39,40,41,42,43",
+        precio: 280000,
+        imagen: "img/guayo_7.avif",
+        estrellas: 4
+    },
+    {
+        id: 8,
+        nombre: "Nike Future Z Mujer",
+        marca: "Nike",
+        deporte: "Futbol",
+        genero: "Mujer",
+        color: "Rosa",
+        talla: "35,36,37,38,39",
+        precio: 400000,
+        imagen: "img/guayo_1.avif",
+        estrellas: 5
+    }
+];
+function verProducto(id){ const producto = guayos.find(g => g.id === id); 
+localStorage.setItem("productoDetalle", JSON.stringify(producto)); 
+window.location.href = "ficha-guayo.html"; } 
+function renderizarGuayos(guayosAMostrar) { 
+    const contenedor = document.getElementById('contenedor-guayos'); 
+    const sinResultados = document.getElementById('sin-resultados'); 
+    
+    if (guayosAMostrar.length === 0) { 
+        contenedor.innerHTML = ''; 
+        sinResultados.style.display = 'block'; 
+        return; 
+    } 
+    
+    sinResultados.style.display = 'none'; 
+    
+    contenedor.innerHTML = guayosAMostrar.map(guayo => ` 
+    <div class="card-guayo"> <img src="${guayo.imagen}" alt="${guayo.nombre}"> <h4>${guayo.nombre}</h4> <p>${guayo.marca} - ${guayo.deporte}</p> 
+    <div class="estrellas"> ${'<i class="fa-solid fa-star"></i>'.repeat(guayo.estrellas)} 
+    </div> <div class="precio-guayo"> COP ${guayo.precio.toLocaleString()} </div>
+    <button onclick="verProducto(${guayo.id})"> Comprar </button> </div> `).join(''); } 
+    document.addEventListener('DOMContentLoaded', () => { 
+        renderizarGuayos(guayos); 
+    });
+
+// Buscador y filtros
+const buscador = document.getElementById('buscador');
+const btnFiltros = document.getElementById('btn-filtros');
+const menuFiltros = document.getElementById('menu-filtros');
+
+if (buscador) {
+    buscador.addEventListener('input', aplicarFiltros);
+}
+
+if (btnFiltros) {
+    btnFiltros.addEventListener('click', () => {
+        menuFiltros.classList.toggle('active');
+    });
+}
+
+document.addEventListener('click', event => {
+    if (!menuFiltros.contains(event.target) && !btnFiltros.contains(event.target)) {
+        menuFiltros.classList.remove('active');
+    }
+});
+
+document.querySelectorAll('.menu-filtros input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('change', aplicarFiltros);
+});
+
+function aplicarFiltros() {
+    const query = (buscador ? buscador.value.toLowerCase().trim() : '');
+
+    const filtrosMarca = Array.from(document.querySelectorAll('input[name="filtro-marca"]:checked')).map(i => i.value);
+    const filtrosDeporte = Array.from(document.querySelectorAll('input[name="filtro-deporte"]:checked')).map(i => i.value);
+    const filtrosGenero = Array.from(document.querySelectorAll('input[name="filtro-genero"]:checked')).map(i => i.value);
+    const filtrosColor = Array.from(document.querySelectorAll('input[name="filtro-color"]:checked')).map(i => i.value);
+    const filtrosTalla = Array.from(document.querySelectorAll('input[name="filtro-talla"]:checked')).map(i => i.value);
+    const filtrosPrecio = Array.from(document.querySelectorAll('input[name="filtro-precio"]:checked')).map(i => i.value);
+
+    const guayosFiltrados = guayos.filter(guayo => {
+        const nombre = guayo.nombre.toLowerCase();
+        const marca = guayo.marca;
+        const deporte = guayo.deporte;
+        const genero = guayo.genero;
+        const color = guayo.color;
+        const tallas = guayo.talla.split(',').map(x => x.trim());
+        const precio = guayo.precio;
+
+        const coincideBusqueda = query === '' || nombre.includes(query);
+        const coincideMarca = filtrosMarca.length === 0 || filtrosMarca.includes(marca);
+        const coincideDeporte = filtrosDeporte.length === 0 || filtrosDeporte.includes(deporte);
+        const coincideGenero = filtrosGenero.length === 0 || filtrosGenero.includes(genero);
+        const coincideColor = filtrosColor.length === 0 || filtrosColor.includes(color);
+        const coincideTalla = filtrosTalla.length === 0 || filtrosTalla.some(t => tallas.includes(t));
+        const coincidePrecio = filtrosPrecio.length === 0 || filtrosPrecio.some(rango => {
+            const [min, max] = rango.split('-').map(Number);
+            return precio >= min && precio <= max;
+        });
+
+        return coincideBusqueda && coincideMarca && coincideDeporte && coincideGenero && coincideColor && coincideTalla && coincidePrecio;
+    });
+
+    renderizarGuayos(guayosFiltrados);
+}
+</script>
+
+</body>
+</html>

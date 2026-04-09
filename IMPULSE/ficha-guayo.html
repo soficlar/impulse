@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ficha Técnica</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:#EAEAEA;
+    color:#1F1F1F;
+}
+
+/* HEADER */
+.header{
+    background:#0D0D0D;
+    padding:18px 40px;
+    color:#fff;
+}
+
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.nav a{
+    color:#fff;
+    font-size:1.3rem;
+}
+
+.nav h2{
+    letter-spacing:2px;
+}
+
+/* CONTENEDOR */
+.ficha-section{
+    display:flex;
+    gap:50px;
+    padding:50px;
+    max-width:1200px;
+    margin:40px auto;
+    background:#fff;
+    border-radius:16px;
+    align-items:center;
+}
+
+/* IMAGEN */
+.imagen-container{
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+
+.producto-imagen{
+    max-width:420px;
+    width:100%;
+    object-fit:contain;
+}
+
+/* DETALLES */
+.detalles{
+    flex:1;
+}
+
+.detalles h1{
+    font-size:2.3rem;
+    margin-bottom:10px;
+}
+
+.detalles h2{
+    color:#D90429;
+    margin-bottom:20px;
+}
+
+/* TU INTERLINEADO */
+.detalles h3{
+    margin-top:30px;
+    margin-bottom:15px;
+    line-height:0.5;
+}
+
+.detalles p{
+    margin-bottom:25px;
+    line-height:1.0;
+}
+
+/* BOTONES */
+.tallas, .colores{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.boton-talla, .boton-color{
+    padding:10px 18px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    background:#fff;
+    cursor:pointer;
+}
+
+.activo{
+    background:#0D0D0D;
+    color:#fff;
+}
+
+/* LISTA */
+ul{
+    margin-top:10px;
+    padding-left:20px;
+    line-height:1.5;
+}
+
+/* BOTON */
+.boton-compra{
+    display:inline-block;
+    margin-top:35px;
+    padding:16px 30px;
+    background:#0D0D0D;
+    color:#fff;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+.boton-compra:hover{
+    background:#D90429;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="nav">
+        <a href="index.html"><i class="fa-solid fa-house"></i></a>
+        <h2>IMPULSE</h2>
+        <a href="index.carrito.html"><i class="fa fa-shopping-cart"></i></a>
+    </div>
+</header>
+
+<section class="ficha-section">
+
+    <div class="imagen-container">
+        <img id="imagen" class="producto-imagen">
+    </div>
+
+    <div class="detalles">
+
+        <h1 id="nombre"></h1>
+        <h2 id="precio"></h2>
+
+        <p id="descripcion"></p>
+
+        <h3>Tallas</h3>
+        <div class="tallas" id="tallas"></div>
+
+        <h3>Colores</h3>
+        <div class="colores" id="colores"></div>
+
+        <h3>Especificaciones Técnicas</h3>
+        <ul>
+            <li>Material superior: Sintético de alto rendimiento</li>
+            <li>Suela: Goma con tracción para césped</li>
+            <li>Peso aproximado: 300g por zapato</li>
+            <li>Uso recomendado: Fútbol competitivo</li>
+        </ul>
+
+        <div class="boton-compra" onclick="agregarAlCarrito()">
+            AGREGAR AL CARRITO
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+const producto = JSON.parse(localStorage.getItem("productoDetalle"));
+
+let tallaSeleccionada = null;
+let colorSeleccionado = null;
+
+// CARGAR DATOS
+if(producto){
+
+    document.getElementById("nombre").innerText = producto.nombre;
+    document.getElementById("precio").innerText = "COP " + producto.precio.toLocaleString();
+    document.getElementById("imagen").src = producto.imagen;
+    document.getElementById("descripcion").innerText = producto.marca + " - " + producto.deporte;
+
+    // TALLAS
+    const tallas = producto.talla.split(",");
+    const contTallas = document.getElementById("tallas");
+
+    tallas.forEach(t => {
+        const btn = document.createElement("button");
+        btn.classList.add("boton-talla");
+        btn.innerText = t;
+
+        btn.onclick = () => {
+            document.querySelectorAll(".boton-talla").forEach(b => b.classList.remove("activo"));
+            btn.classList.add("activo");
+            tallaSeleccionada = t;
+        };
+
+        contTallas.appendChild(btn);
+    });
+
+    // COLORES (solo uno por ahora)
+    const colores = document.getElementById("colores");
+
+    const btnColor = document.createElement("button");
+    btnColor.classList.add("boton-color");
+    btnColor.innerText = producto.color;
+
+    btnColor.onclick = () => {
+        document.querySelectorAll(".boton-color").forEach(b => b.classList.remove("activo"));
+        btnColor.classList.add("activo");
+        colorSeleccionado = producto.color;
+    };
+
+    colores.appendChild(btnColor);
+}
+
+// AGREGAR AL CARRITO
+function agregarAlCarrito(){
+
+    if(!tallaSeleccionada || !colorSeleccionado){
+        alert("Selecciona talla y color");
+        return;
+    }
+
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    carrito.push({
+        nombre: producto.nombre,
+        precio: producto.precio,
+        talla: tallaSeleccionada,
+        color: colorSeleccionado,
+        imagen: producto.imagen
+    });
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    window.location.href = "index.carrito.html";
+}
+
+</script>
+
+</body>
+</html>

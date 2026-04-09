@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Carrito</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+}
+
+/* HEADER */
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+    background:#000000;
+}
+
+.nav a{
+    color:rgb(255, 255, 255);
+    font-size:18px;
+}
+
+.logo{
+    font-weight:bold;
+    font-size:20px;
+    color:rgb(255, 255, 255);
+}
+
+/* CONTENEDOR */
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:40px;
+}
+
+/* TITULO */
+h2{
+    background:#e0e0e0;
+    padding:15px;
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+/* TABLA */
+.tabla{
+    background:white;
+    padding:20px;
+}
+
+/* ENCABEZADO */
+.encabezado{
+    display:grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 0.5fr;
+    font-size:12px;
+    color:#666;
+    border-bottom:1px solid #ddd;
+    padding-bottom:10px;
+}
+
+/* FILA */
+.fila{
+    display:grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 0.5fr;
+    align-items:center;
+    padding:20px 0;
+    border-bottom:1px solid #eee;
+}
+
+/* IMAGEN */
+.producto-img{
+    width:80px;
+    height:80px;
+    object-fit:contain;
+}
+
+/* DESCRIPCION */
+.descripcion{
+    font-size:14px;
+}
+
+/* CANTIDAD */
+.cantidad-box{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.cantidad-box button{
+    width:30px;
+    height:30px;
+    border:none;
+    background:#ddd;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.cantidad-box span{
+    width:30px;
+    text-align:center;
+}
+
+/* ELIMINAR */
+.eliminar{
+    cursor:pointer;
+    color:#888;
+    font-size:18px;
+}
+
+.eliminar:hover{
+    color:red;
+}
+
+/* TOTAL */
+.total-container{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    margin-top:30px;
+    gap:15px;
+}
+
+.total-container h3{
+    font-size:18px;
+}
+
+.total-precio{
+    font-size:24px;
+    font-weight:bold;
+}
+
+/* BOTON */
+.pagar{
+    background:black;
+    color:white;
+    border:none;
+    padding:15px 50px;
+    cursor:pointer;
+}
+
+.pagar:hover{
+    opacity:0.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="nav">
+    <a href="index.html"><i class="fa-solid fa-house"></i></a>
+    <div class="logo">Impulse</div>
+    <div></div>
+</div>
+
+<div class="container">
+<h2>RESUMEN DE COMPRAS</h2>
+
+<div class="tabla" id="tablaCarrito">
+
+    <div class="encabezado">
+        <div>PRODUCTO</div>
+        <div>DESCRIPCIÓN</div>
+        <div>PRECIO</div>
+        <div>CANTIDAD</div>
+        <div>TOTAL</div>
+        <div></div>
+    </div>
+
+</div>
+
+<div class="total-container">
+    <h3>TOTAL</h3>
+    <div class="total-precio" id="totalGeneral">$ 0</div>
+    <button class="pagar">IR A PAGAR</button>
+</div>
+</div>
+<footer> 
+    <div class="footer-grid">
+
+        <div>
+            <h4>Impulse</h4>
+            <p><a href="impulse.html#sobre">Sobre Nosotros</a></p>
+            <p><a href="impulse.html#tiendas">Tiendas</a></p>
+            <p><a href="impulse.html#envios">Envios</a></p>
+        </div>
+
+        <div>
+            <h4>Ayuda</h4>
+            <p><a href="ayuda.html#devoluciones">Politicas de devolución</a></p>
+            <p><a href="ayuda.html#pqr">PQR</a></p>
+        </div>
+
+        <div>
+            <h4>Redes Sociales</h4>
+            <p><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></p>
+            <p><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></p>
+            <p><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></p>
+        </div>
+
+        <div>
+            <h4>Contacto</h4>
+            <p>support@email.com</p>
+            <p>Cra 5 38-07 Neiva-Huila</p>
+            <p>315 157 04 80</p>
+        </div>
+
+    </div>
+
+    <p class="copy">© 2026 Impulse - Todos los derechos reservados</p>
+</footer>
+
+<script>
+
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+let productoUnico = JSON.parse(localStorage.getItem("producto"));
+if(productoUnico){
+    carrito.push(productoUnico);
+    localStorage.removeItem("producto");
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+const tabla = document.getElementById("tablaCarrito");
+
+function renderCarrito(){
+
+    tabla.innerHTML = `
+    <div class="encabezado">
+        <div>PRODUCTO</div>
+        <div>DESCRIPCIÓN</div>
+        <div>PRECIO</div>
+        <div>CANTIDAD</div>
+        <div>TOTAL</div>
+        <div></div>
+    </div>
+    `;
+
+    let totalGeneral = 0;
+
+    carrito.forEach((producto, index) => {
+
+        let cantidad = producto.cantidad || 1;
+        let subtotal = producto.precio * cantidad;
+        totalGeneral += subtotal;
+
+        tabla.innerHTML += `
+        <div class="fila">
+            
+            <div>
+                <img src="${producto.imagen || 'img/default.avif'}" class="producto-img">
+            </div>
+
+            <div class="descripcion">
+                ${producto.nombre}<br>
+                Talla: ${producto.talla} | Color: ${producto.color}
+            </div>
+
+            <div>$ ${producto.precio.toLocaleString()}</div>
+
+            <div class="cantidad-box">
+                <button onclick="cambiarCantidad(${index}, -1)">-</button>
+                <span>${cantidad}</span>
+                <button onclick="cambiarCantidad(${index}, 1)">+</button>
+            </div>
+
+            <div>$ ${subtotal.toLocaleString()}</div>
+
+            <div>
+                <i class="fa fa-trash eliminar" onclick="eliminarProducto(${index})"></i>
+            </div>
+
+        </div>
+        `;
+    });
+
+    document.getElementById("totalGeneral").innerText =
+        "$ " + totalGeneral.toLocaleString();
+}
+
+// CAMBIAR CANTIDAD
+function cambiarCantidad(index, cambio){
+
+    if(!carrito[index].cantidad){
+        carrito[index].cantidad = 1;
+    }
+
+    carrito[index].cantidad += cambio;
+
+    // 🔥 eliminar si baja de 1
+    if(carrito[index].cantidad < 1){
+        eliminarProducto(index);
+        return;
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    renderCarrito();
+}
+
+// ELIMINAR
+function eliminarProducto(index){
+    carrito.splice(index, 1);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    renderCarrito();
+}
+
+renderCarrito();
+
+</script>
+
+</body>
+</html>

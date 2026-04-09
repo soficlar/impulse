@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Usuario - Impulse</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* GENERAL */
+body{
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background:#f4f4f4;
+}
+
+/* HEADER */
+.header{
+    background:#0D0D0D;
+    color:white;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    height: 10vh;
+}
+
+.header a{
+    color:white;
+    text-decoration:none;
+}
+
+/* CONTENEDOR */
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+/* PERFIL */
+.perfil{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.perfil p {
+    margin: 3px;
+}
+
+.perfil img{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    object-fit:cover; /* evita pixelado */
+}
+
+.btn-editar{
+    margin-left:auto;
+    padding:10px 20px;
+    background:#566083;
+    color:white;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+/* CARD */
+.card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+/* PEDIDOS */
+.pedido{
+    border-bottom:1px solid #eee;
+    padding:15px 0;
+}
+
+.fila-pedido{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* BOTONES IGUALES */
+.estado{
+    width:100px;
+    text-align:center;
+    background:#333;
+    color:white;
+    padding:6px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+/* BOTON VER */
+.btn-detalle{
+    width:80px;
+    background:#D90429;
+    color:white;
+    border:none;
+    padding:6px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-left:10px;
+}
+
+/* DETALLE OCULTO */
+.detalle{
+    display:none;
+    padding:10px;
+    background:#f9f9f9;
+    margin-top:10px;
+    border-radius:8px;
+}
+
+/* DIRECCIONES */
+.header-direcciones{
+    display:flex;
+    justify-content:space-between;
+}
+
+.direccion{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+}
+
+.iconos-dir i{
+    margin-left:10px;
+    cursor:pointer;
+}
+
+.btn-agregar{
+    background:black;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+    background:#0D0D0D;
+    color:white;
+    padding:40px;
+}
+
+footer a{
+    color:white;
+    text-decoration:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <a href="index.html"><i class="fa-solid fa-house"></i></a>
+    <h2>Mi Cuenta</h2>
+    <a href="index.carrito.html"><i class="fa fa-shopping-cart"></i></a>
+</header>
+
+<div class="container">
+
+<!-- PERFIL -->
+<div class="perfil">
+    <img src="img/perfil.jpg" id="fotoUsuario">
+    <div>
+        <h2 id="nombreUsuario">Usuario</h2>
+        <p id="correoUsuario">correo@email.com</p>
+        <p id="telefonoUsuario">Tel: 000000000</p>
+    </div>
+    <button class="btn-editar" onclick="editarPerfil()">Editar</button>
+</div>
+
+<!-- PEDIDOS -->
+<div class="card">
+<h3>Historial de Pedidos</h3>
+
+<div class="pedido">
+    <div class="fila-pedido">
+        <div>#001 Nike Air Max</div>
+        <div>
+            <span class="estado">Entregado</span>
+            <button class="btn-detalle" onclick="toggleDetalle(this)">Ver</button>
+        </div>
+    </div>
+    <div class="detalle">
+        Fecha: 10/03/2026<br>
+        Total: COP 329.000<br>
+        Dirección: Neiva
+    </div>
+</div>
+
+<div class="pedido">
+    <div class="fila-pedido">
+        <div>#002 Puma Speedcat</div>
+        <div>
+            <span class="estado">Enviado</span>
+            <button class="btn-detalle" onclick="toggleDetalle(this)">Ver</button>
+        </div>
+    </div>
+    <div class="detalle">
+        Fecha: 12/03/2026<br>
+        Total: COP 450.000<br>
+        Estado: En camino
+    </div>
+</div>
+
+</div>
+
+<!-- DIRECCIONES -->
+<div class="card">
+
+<div class="header-direcciones">
+    <h3>Direcciones</h3>
+    <div>
+        <button class="btn-agregar" onclick="agregarDireccion()">+</button>
+        <i class="fa fa-trash" onclick="eliminarTodo()"></i>
+    </div>
+</div>
+
+<div id="lista-direcciones">
+    <div class="direccion">
+        <span>Neiva - Cra 5 #38-07</span>
+        <div class="iconos-dir">
+            <i class="fa fa-pen" onclick="editarDireccion(this)"></i>
+            <i class="fa fa-trash" onclick="eliminarDireccion(this)"></i>
+        </div>
+    </div>
+</div>
+
+</div>
+
+</div>
+
+<footer> 
+    <div class="footer-grid">
+
+        <div>
+            <h4>Impulse</h4>
+            <p><a href="impulse.html#sobre">Sobre Nosotros</a></p>
+            <p><a href="impulse.html#tiendas">Tiendas</a></p>
+            <p><a href="impulse.html#envios">Envios</a></p>
+        </div>
+
+        <div>
+            <h4>Ayuda</h4>
+            <p><a href="ayuda.html#devoluciones">Politicas de devolución</a></p>
+            <p><a href="ayuda.html#pqr">PQR</a></p>
+        </div>
+
+        <div>
+            <h4>Redes Sociales</h4>
+            <p><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></p>
+            <p><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></p>
+            <p><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></p>
+        </div>
+
+        <div>
+            <h4>Contacto</h4>
+            <p>support@email.com</p>
+            <p>Cra 5 38-07 Neiva-Huila</p>
+            <p>315 157 04 80</p>
+        </div>
+
+    </div>
+
+    <p class="copy">© 2026 Impulse - Todos los derechos reservados</p>
+</footer>
+
+<script>
+
+/* EDITAR PERFIL */
+function editarPerfil(){
+    let nombre = prompt("Nombre:", localStorage.getItem("nombre") || "");
+    let correo = prompt("Correo:", localStorage.getItem("correo") || "");
+    let telefono = prompt("Teléfono:", localStorage.getItem("telefono") || "");
+
+    if(nombre) localStorage.setItem("nombre", nombre);
+    if(correo) localStorage.setItem("correo", correo);
+    if(telefono) localStorage.setItem("telefono", telefono);
+
+    cargarPerfil();
+}
+
+/* CARGAR PERFIL */
+function cargarPerfil(){
+    document.getElementById("nombreUsuario").innerText = localStorage.getItem("nombre") || "Usuario";
+    document.getElementById("correoUsuario").innerText = localStorage.getItem("correo") || "correo@email.com";
+    document.getElementById("telefonoUsuario").innerText = "Tel: " + (localStorage.getItem("telefono") || "000000000");
+}
+
+cargarPerfil();
+
+/* TOGGLE DETALLE */
+function toggleDetalle(btn){
+    let detalle = btn.parentElement.parentElement.nextElementSibling;
+    detalle.style.display = detalle.style.display === "block" ? "none" : "block";
+}
+
+/* DIRECCIONES */
+function agregarDireccion(){
+    let dir = prompt("Nueva dirección:");
+    if(!dir) return;
+
+    document.getElementById("lista-direcciones").innerHTML += `
+    <div class="direccion">
+        <span>${dir}</span>
+        <div class="iconos-dir">
+            <i class="fa fa-pen" onclick="editarDireccion(this)"></i>
+            <i class="fa fa-trash" onclick="eliminarDireccion(this)"></i>
+        </div>
+    </div>`;
+}
+
+function editarDireccion(btn){
+    let texto = btn.parentElement.previousElementSibling;
+    let nueva = prompt("Editar:", texto.innerText);
+    if(nueva) texto.innerText = nueva;
+}
+
+function eliminarDireccion(btn){
+    btn.closest(".direccion").remove();
+}
+
+function eliminarTodo(){
+    document.getElementById("lista-direcciones").innerHTML="";
+}
+
+</script>
+
+</body>
+</html>

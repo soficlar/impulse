@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ficha Técnica - Adistar</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #EAEAEA;
+    color: #1F1F1F;
+}
+
+/* HEADER */
+.header {
+    background: #0D0D0D;
+    padding: 18px 40px;
+    color: #FFFFFF;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav a {
+    color: #FFFFFF;
+    font-size: 1.3rem;
+    text-decoration: none;
+}
+
+.nav h2 {
+    letter-spacing: 2px;
+}
+
+/* CONTENEDOR */
+.ficha-section {
+    display: flex;
+    gap: 50px;
+    padding: 50px;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: #FFFFFF;
+    border-radius: 16px;
+    align-items: center;
+}
+
+/* IMAGEN */
+.imagen-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.producto-imagen {
+    max-width: 420px;
+    width: 100%;
+    object-fit: contain;
+}
+
+/* DETALLES */
+.detalles {
+    flex: 1;
+}
+
+.detalles h1 {
+    font-size: 2.3rem;
+    margin-bottom: 10px;
+}
+
+.detalles h2 {
+    color: #D90429;
+    margin-bottom: 20px;
+}
+
+/* TU INTERLINEADO EXACTO */
+.detalles h3 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    line-height: 0.5;
+}
+
+.detalles p {
+    margin-bottom: 25px;
+    line-height: 1.0;
+}
+
+/* BOTONES */
+.tallas, .colores {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.boton-talla, .boton-color {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: #FFFFFF;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* ACTIVO */
+.activo {
+    background: #0D0D0D;
+    color: #FFFFFF;
+    border-color: #0D0D0D;
+}
+
+/* LISTA */
+ul {
+    margin-top: 10px;
+    padding-left: 20px;
+    line-height: 1.5;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+/* BOTÓN */
+.boton-compra {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 16px 30px;
+    background: #0D0D0D;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.boton-compra:hover {
+    background: #D90429;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .ficha-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tallas, .colores {
+        justify-content: center;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+    <div class="nav">
+        <a href="index.html"><i class="fa-solid fa-house"></i></a>
+        <h2>IMPULSE</h2>
+        <a href="index.carrito.html"><i class="fa fa-shopping-cart"></i></a>
+    </div>
+</header>
+
+<section class="ficha-section">
+    
+    <div class="imagen-container">
+        <img src="img/running_8.avif" class="producto-imagen">
+    </div>
+
+    <div class="detalles">
+        <h1>Adidas Terrex Agravic Speed</h1>
+        <h2>COP 250.000</h2>
+
+        <p>
+            Tenis deportivos de alto rendimiento diseñados para running y actividades intensas, 
+            con máxima comodidad y soporte.
+        </p>
+
+        <h3>Tallas</h3>
+        <div class="tallas">
+            <button class="boton-talla">39</button>
+            <button class="boton-talla">40</button>
+        </div>
+
+        <h3>Colores</h3>
+        <div class="colores">
+            <button class="boton-color">Negro</button>
+            <button class="boton-color">Blanco</button>
+        </div>
+
+        <h3>Especificaciones Técnicas</h3>
+        <ul>
+            <li>Material superior: Malla transpirable y cuero sintético</li>
+            <li>Suela: Goma antideslizante con amortiguación</li>
+            <li>Peso aproximado: 300g por zapato</li>
+            <li>Altura de suela: 2.5 cm</li>
+            <li>Uso recomendado: Running y entrenamiento deportivo</li>
+            <li>Tecnología: Amortiguación avanzada para mayor comodidad</li>
+        </ul>
+
+        <a href="#" class="boton-compra" onclick="agregarAlCarrito()">
+            AGREGAR AL CARRITO
+        </a>
+    </div>
+
+</section>
+
+<script>
+let tallaSeleccionada = null;
+let colorSeleccionado = null;
+
+// TALLAS
+document.querySelectorAll('.boton-talla').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.boton-talla').forEach(b => b.classList.remove('activo'));
+        btn.classList.add('activo');
+        tallaSeleccionada = btn.textContent;
+    });
+});
+
+// COLORES
+document.querySelectorAll('.boton-color').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.boton-color').forEach(b => b.classList.remove('activo'));
+        btn.classList.add('activo');
+        colorSeleccionado = btn.textContent;
+    });
+});
+
+// CARRITO
+function agregarAlCarrito() {
+
+    if (!tallaSeleccionada || !colorSeleccionado) {
+        alert("Por favor selecciona talla y color");
+        return;
+    }
+
+    const producto = {
+        nombre: "Adistar",
+        precio: 455000,
+        talla: tallaSeleccionada,
+        color: colorSeleccionado
+    };
+
+    localStorage.setItem("producto", JSON.stringify(producto));
+
+    window.location.href = "index.carrito.html";
+}
+</script>
+
+</body>
+</html>

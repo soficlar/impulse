@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Página Web de calzado deportivo">
+    <meta name="author" content="Ana Sofía Claros Melo">
+    <title>Impulse</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <a href="index.html" class="inicio-link"><i class="fa-solid fa-house"></i></a>
+            </div>
+            <div class="header-center">
+                <h2>Impulse</h2>
+            </div>
+            <div class="header-right">
+                <input type="text" id="buscador" placeholder="Buscar productos...">
+                <a href="index.carrito.html"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <section class="productos">
+    <div class="filtros-container">
+        <button class="btn-filtros" id="btn-filtros"><i class="fa-solid fa-sliders"></i> Filtros</button>
+        <div class="menu-filtros" id="menu-filtros">
+            <div class="filtro-grupo">
+                <h4>Marca</h4>
+                <label><input type="checkbox" name="filtro-marca" value="Nike"> Nike</label>
+                <label><input type="checkbox" name="filtro-marca" value="Puma"> Puma</label>
+                <label><input type="checkbox" name="filtro-marca" value="Adidas"> Adidas</label>
+            </div>
+            <div class="filtro-grupo">
+                <h4>Género</h4>
+                <label><input type="checkbox" name="filtro-genero" value="Hombre"> Hombre</label>
+                <label><input type="checkbox" name="filtro-genero" value="Mujer"> Mujer</label>
+                <label><input type="checkbox" name="filtro-genero" value="Unisex"> Unisex</label>
+            </div>
+            <div class="filtro-grupo">
+                <h4>Color</h4>
+                <label><input type="checkbox" name="filtro-color" value="Negro"> Negro</label>
+                <label><input type="checkbox" name="filtro-color" value="Blanco"> Blanco</label>
+                <label><input type="checkbox" name="filtro-color" value="Rojo"> Rojo</label>
+                <label><input type="checkbox" name="filtro-color" value="Azul"> Azul</label>
+            </div>
+            <div class="filtro-grupo">
+                <h4>Talla</h4>
+                <label><input type="checkbox" name="filtro-talla" value="36"> 36</label>
+                <label><input type="checkbox" name="filtro-talla" value="37"> 37</label>
+                <label><input type="checkbox" name="filtro-talla" value="38"> 38</label>
+                <label><input type="checkbox" name="filtro-talla" value="39"> 39</label>
+                <label><input type="checkbox" name="filtro-talla" value="40"> 40</label>
+                <label><input type="checkbox" name="filtro-talla" value="41"> 41</label>
+                <label><input type="checkbox" name="filtro-talla" value="42"> 42</label>
+                <label><input type="checkbox" name="filtro-talla" value="43"> 43</label>
+            </div>
+            <div class="filtro-grupo">
+                <h4>Rango de Precio</h4>
+                <label><input type="checkbox" name="filtro-precio" value="0-300000"> Hasta $300.000</label>
+                <label><input type="checkbox" name="filtro-precio" value="300000-400000"> $300.000 - $400.000</label>
+                <label><input type="checkbox" name="filtro-precio" value="400000-500000"> $400.000 - $500.000</label>
+                <label><input type="checkbox" name="filtro-precio" value="500000-999999"> Mayor a $500.000</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="columna_marcas">
+        <div class="card" data-marca="Nike" data-genero="Hombre" data-color="Negro" data-talla="40,41,42,43" data-precio="350000">
+            <img src="img/AIR+MONARCH+IV.avif">
+            <h4>Nike Air Monarch IV</h4>
+            <div class="estrellas">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <span class="precio">COP 350.000</span>
+            <a href="ficha-nike-air-monarch-iv.html"><button>Comprar</button></a>
+        </div>
+
+        <div class="card" data-marca="Nike" data-genero="Unisex" data-color="Blanco" data-talla="36,37,38,39,40,41,42,43" data-precio="329000">
+            <img src="img/nike air max 90.avif">
+            <h4>Nike Air Max 90</h4>
+            <div class="estrellas">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <span class="precio">COP 329.000</span>
+            <a href="ficha-nike-air-max-90.html"><button>Comprar</button></a>
+        </div>
+
+        <div class="card" data-marca="Nike" data-genero="Hombre" data-color="Azul" data-talla="39,40,41,42,43" data-precio="450000">
+            <img src="img/NIKE+FLEX+TRAIN.avif">
+            <h4>Nike Flex Train</h4>
+            <div class="estrellas">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <span class="precio">COP 450.000</span>
+            <a href="ficha-nike-flex-train.html"><button>Comprar</button></a>
+        </div>
+
+        <div class="card" data-marca="Nike" data-genero="Hombre" data-color="Negro" data-talla="40,41,42,43" data-precio="400000">
+            <img src="img/NIKE+JUNIPER+TRAIL+3.avif">
+            <h4>Nike Juniper Trail 3</h4>
+            <div class="estrellas">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <span class="precio">COP 400.000</span>
+            <a href="ficha-nike-juniper-trail-3.html"><button>Comprar</button></a>
+        </div>
+
+        <div class="card" data-marca="Otros" data-genero="Mujer" data-color="Rojo" data-talla="35,36,37,38,39" data-precio="250000">
+            <img src="img/Tenis-casuales-de-piel-Palermo.avif">
+            <h4>Tenis Casuales Palermo</h4>
+            <div class="estrellas">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <span class="precio">COP 250.000</span>
+            <a href="ficha-tenis-casuales-palermo.html"><button>Comprar</button></a>
+        </div>
+
+        <div class="card" data-marca="Puma" data-genero="Hombre" data-color="Negro" data-talla="40,41,42,43" data-precio="500000">
+            <img src="img/Tenis-Speedcat-OG.avif">
+            <h4>Puma Speedcat OG</h4>
+            <div class="estrellas">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <span class="precio">COP 500.000</span>
+            <a href="ficha-puma-speedcat-og.html"><button>Comprar</button></a>
+        </div>
+
+        <div class="card" data-marca="Puma" data-genero="Hombre" data-color="Rojo" data-talla="40,41,42,43" data-precio="450000">
+            <img src="img/F1®-Vegas-Speedcat-Sneakers.avif">
+            <h4>F1 Vegas Speedcat</h4>
+            <div class="estrellas">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <span class="precio">COP 450.000</span>
+            <a href="ficha-f1-vegas-speedcat.html"><button>Comprar</button></a>
+        </div>
+        <div class="card" data-marca="Puma" data-genero="Unisex" data-color="Negro" data-talla="36,37,38,39,40,41,42,43" data-precio="450000">
+            <img src="img/puma speedcat.avif">
+            <h4>Puma Speedcat</h4>
+            <div class="estrellas">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <span class="precio">COP 450.000</span>
+            <a href="ficha-puma-speedcat.html"><button>Comprar</button></a>
+        </div>
+
+        <div class="card" data-marca="Adidas" data-genero="Unisex" data-color="Negro" data-talla="39,40" data-precio="455000">
+            <img src="img/ADISTAR.jpg">
+            <h4>Adistar</h4>
+            <div class="estrellas">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <span class="precio">COP 455.000</span>
+            <a href="ficha-adistar.html"><button>Comprar</button></a>
+        </div>
+        
+    </div>
+</section>
+<footer> 
+    <div class="footer-grid">
+
+        <div>
+            <h4>Impulse</h4>
+            <p><a href="impulse.html#sobre">Sobre Nosotros</a></p>
+            <p><a href="impulse.html#tiendas">Tiendas</a></p>
+            <p><a href="impulse.html#envios">Envios</a></p>
+        </div>
+
+        <div>
+            <h4>Ayuda</h4>
+            <p><a href="ayuda.html#devoluciones">Politicas de devolución</a></p>
+            <p><a href="ayuda.html#pqr">PQR</a></p>
+        </div>
+
+        <div>
+            <h4>Redes Sociales</h4>
+            <p><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></p>
+            <p><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></p>
+            <p><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></p>
+        </div>
+
+        <div>
+            <h4>Contacto</h4>
+            <p>support@email.com</p>
+            <p>Cra 5 38-07 Neiva-Huila</p>
+            <p>315 157 04 80</p>
+        </div>
+
+    </div>
+
+    <p class="copy">© 2026 Impulse - Todos los derechos reservados</p>
+</footer>
+
+<script>
+// Buscador
+document.getElementById('buscador').addEventListener('input', function() {
+    aplicarFiltros();
+});
+
+// Menú de filtros
+document.getElementById('btn-filtros').addEventListener('click', function() {
+    const menu = document.getElementById('menu-filtros');
+    menu.classList.toggle('active');
+});
+
+// Cerrar el menú al hacer clic fuera
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById('menu-filtros');
+    const btn = document.getElementById('btn-filtros');
+    if (!menu.contains(event.target) && !btn.contains(event.target)) {
+        menu.classList.remove('active');
+    }
+});
+
+// Filtros
+document.querySelectorAll('.menu-filtros input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('change', aplicarFiltros);
+});
+
+function aplicarFiltros() {
+    const queryBusqueda = document.getElementById('buscador').value.toLowerCase().trim();
+    
+    const filtrosMarca = Array.from(document.querySelectorAll('input[name="filtro-marca"]:checked')).map(el => el.value);
+    const filtrosGenero = Array.from(document.querySelectorAll('input[name="filtro-genero"]:checked')).map(el => el.value);
+    const filtrosColor = Array.from(document.querySelectorAll('input[name="filtro-color"]:checked')).map(el => el.value);
+    const filtrosTalla = Array.from(document.querySelectorAll('input[name="filtro-talla"]:checked')).map(el => el.value);
+    const filtrosPrecio = Array.from(document.querySelectorAll('input[name="filtro-precio"]:checked')).map(el => el.value);
+
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        const nombre = card.querySelector('h4').textContent.toLowerCase();
+        const marca = card.dataset.marca;
+        const genero = card.dataset.genero;
+        const color = card.dataset.color;
+        const tallas = card.dataset.talla.split(',').map(t => t.trim());
+        const precio = parseInt(card.dataset.precio);
+
+        // Buscar por nombre - si hay búsqueda, debe coincidir; si no hay, pasa el filtro
+        const coincideBusqueda = queryBusqueda === '' || nombre.includes(queryBusqueda);
+
+        // Aplicar filtros - si no hay filtros seleccionados, pasa todo; si hay, debe coincidir
+        const coincideMarca = filtrosMarca.length === 0 || filtrosMarca.includes(marca);
+        const coincideGenero = filtrosGenero.length === 0 || filtrosGenero.includes(genero);
+        const coincideColor = filtrosColor.length === 0 || filtrosColor.includes(color);
+        const coincideTalla = filtrosTalla.length === 0 || filtrosTalla.some(t => tallas.includes(t.trim()));
+        const coincidePrecio = filtrosPrecio.length === 0 || filtrosPrecio.some(rango => {
+            const [min, max] = rango.split('-').map(Number);
+            return precio >= min && precio <= max;
+        });
+
+        // Mostrar si cumple todos los filtros
+        if (coincideBusqueda && coincideMarca && coincideGenero && coincideColor && coincideTalla && coincidePrecio) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+</script>
+    
+</body>
+</html>
